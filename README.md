@@ -10,7 +10,7 @@
 Se trata de un servicio para ayudar a las personas a reportar mascotas perdidas. El objetivo del sitio web es proveer un medio para publicar anuncios sobre una mascota extraviada junto con información acerca de esta y de su dueño, además de ofrecer un espacio para visualizar el progreso y resultado de cada caso. 
 
 ## Enlace al diseño
-
+https://marvelapp.com/prototype/6d245ij/screen/74260254
 
 ## Enlace a la plantilla de Bootstrap
 https://startbootstrap.com/previews/creative
