@@ -10158,3 +10158,13 @@ header.masthead h1 {
 .text-white-75 {
   color: rgba(255, 255, 255, 0.75);
 }
+#img_comoF{
+  max-height: 400px;
+  
+}
+#img_comoF img{
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  
+}
