@@ -1,0 +1,24 @@
+{
+  "name": "MascotasWebMasters",
+  "version": "1.0.0",
+  "description": "- Luis Abrie Cuevas (Líder)\r - Bryan Loor Macías\r - Adriana Riofrío Silva\r - Livingston Pérez Correa",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisabrie/MascotasWebMasters.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisabrie/MascotasWebMasters/issues"
+  },
+  "homepage": "https://github.com/luisabrie/MascotasWebMasters#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}

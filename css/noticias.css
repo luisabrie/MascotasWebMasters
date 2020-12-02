@@ -1,0 +1,17 @@
+.card{
+    margin: 5px;
+    padding: 0;
+}
+#vista{
+    
+}
+#card:hover{
+    background-color: #434343;
+    color: honeydew;
+}
+#destacado,#cards{
+    justify-content: center;
+    
+}
+
+
