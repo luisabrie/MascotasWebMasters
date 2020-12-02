@@ -10082,7 +10082,7 @@ hr.light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/mainBG.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../img/mainBG.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -10118,17 +10118,38 @@ header.masthead h1 {
   flex-direction: column;
 }
 
-.info h5{
+.info h4, .info h5{
   color: #434343;
 }
 
-.info h3{
+.info h2{
   color: #1d6b63;
-  
 }
 
 #plan{
   background-color: #ffd966;
+}
+
+.container-plan{
+  display: grid;
+  grid-template: 2fr 2fr 2fr / 1fr 4fr;
+  column-gap: 10%;
+  padding: 10%;
+
+}
+
+.container-plan h5{
+  color: #434343;
+  text-decoration-style: none;
+  font-weight: normal;
+}
+
+.plan-element .redes{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8%;
+
 }
 
 #portfolio .container-fluid, #portfolio .container-sm, #portfolio .container-md, #portfolio .container-lg, #portfolio .container-xl, #planes .container-fluid, #planes .container-sm, #planes .container-md, #planes .container-lg, #planes .container-xl {
