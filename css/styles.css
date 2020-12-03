@@ -10222,9 +10222,35 @@ header.masthead h1 {
 #img_comoF img{
   height: 100%;
   width: 100%;
-  border-radius: 30px;
-  
+  border-radius: 30px; 
 }
 
+p.number{
+  color: #1d6b63;
+  font-weight: bold;
+  font-size: 68px;
+}
+
+.container.about{
+  display: flex;
+
+}
+
+p.about-info{
+  padding: 40px;
+}
+
+.container.equipo{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-card{
+  margin: 20px;
+
+}
 
 

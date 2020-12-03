@@ -2,11 +2,11 @@ const intro = introJs()
 intro.setOptions({
     steps: [
         {
-            intro: 'Bienvenido a ...'
+            intro: 'Bienvenido a Volver a Casa'
         },
         {
             element: '#step-one',
-            intro:'Si perdiste a tu mascota y necesitas ayuda, nosotros podemos ayudarte '
+            intro:'Ayudamos a las mascotas a Volver a Casa. Si perdiste a tu mejor amigo, nosotros podemos ayudarte.'
 
         },
         {
