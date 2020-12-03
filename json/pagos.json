@@ -1,0 +1,30 @@
+[
+    {
+        "id":"1256",
+        "persona":"Andres Maldonado",
+        "fecha":"2020-03-12",
+        "monto":"10",
+        "estado": "Aceptado"
+    },
+    {
+        "id":"3540",
+        "persona":"Rosa Cruz",
+        "fecha":"2020-05-20",
+        "monto":"5",
+        "estado": "Aceptado"
+    },
+    {
+        "id":"7644",
+        "persona":"Alex Quijije",
+        "fecha":"2020-06-05",
+        "monto":"5",
+        "estado": "Rechazado"
+    },
+    {
+        "id":"7892",
+        "persona":"Juan Barzola",
+        "fecha":"2020-09-01",
+        "monto":"10",
+        "estado": "Rechazado"
+    }
+    ]

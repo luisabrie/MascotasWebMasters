@@ -4232,6 +4232,13 @@ li.active p{
   font-family: 'Poppins';
 }
 
-.card-title{
+h1, h2, h3, h4, h5, h6{
   font-family: 'Sansita Swashed';
 }
+
+table > tr > th{
+  color: #1d6b63;
+  text-transform: uppercase;
+  font-size: medium;
+}
+
