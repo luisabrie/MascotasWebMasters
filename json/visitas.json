@@ -1,0 +1,46 @@
+{
+    "visitas": [
+        {
+            "Enero": 55,
+            "Febrero": 20,
+            "Marzo": 30,
+            "Abril": 45,
+            "Mayo": 2,
+            "Junio": 4,
+            "Julio": 10,
+            "Agosto": 8,
+            "Septiempre": 4,
+            "Octubre": 4,
+            "Noviembre": 6,
+            "Diciembre": 23
+        },
+        {
+            "Enero": 4,
+            "Febrero": 6,
+            "Marzo": 45,
+            "Abril": 54,
+            "Mayo": 2,
+            "Junio": 4,
+            "Julio": 1,
+            "Agosto": 2,
+            "Septiempre": 4,
+            "Octubre": 4,
+            "Noviembre": 7,
+            "Diciembre": 10
+        },
+        {
+            "Enero": 50,
+            "Febrero": 16,
+            "Marzo": 23,
+            "Abril": 12,
+            "Mayo": 40,
+            "Junio": 3,
+            "Julio": 1,
+            "Agosto": 2,
+            "Septiempre": 4,
+            "Octubre": 40,
+            "Noviembre": 7,
+            "Diciembre": 15
+        }
+    ]
+}
