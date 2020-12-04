@@ -1,0 +1,21 @@
+.buscador{
+    text-align: center;
+}
+
+
+
+.buscador .form-input{
+    background: rgba(228, 237, 244);
+    border: none;
+    outline: none;
+    width: 50%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #000000;
+    font-family: Roboto;
+  
+  }
+
+

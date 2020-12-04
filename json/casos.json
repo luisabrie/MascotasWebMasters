@@ -1,0 +1,26 @@
+[
+    {
+        "nombre":"Nena",
+        "raza":"dalmata",
+        "sexo":"hembra",
+        "tipo":"perro"
+    },
+    {
+        "nombre":"El Michi",
+        "raza":"siamés",
+        "sexo":"macho",
+        "tipo":"gato"
+    },
+    {
+        "nombre":"Sombra",
+        "raza":"bombay",
+        "sexo":"hembra",
+        "tipo":"gato"
+    },
+    {
+        "nombre":"Chispas",
+        "raza":"chihuahua",
+        "sexo":"macho",
+        "tipo":"perro"
+    }
+    ]
