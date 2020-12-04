@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -61,20 +61,20 @@
         <!--Noticias-->
         <div class="contenedor">
 
-          <form action="" method="" class="form">
+          <form action="./" method="POST" class="form">
     
     
               <label for="txtNombre" class="form-label">Nombre:</label>
     
-              <input type="text" placeholder="Nombre..." id="nombre" class="form-input" name="usuario" required/>
+              <input type="text" placeholder="Nombre..." id="txtNombre" class="form-input" name="usuario" required/>
     
               <label for="txtNaci" class="form-label">Fecha de Nacimiento:</label>
     
-              <input type="date" placeholder="Fecha de Nacimiento..." class="form-input" id="fechNac" name="fechNa" required/>
+              <input type="date"  class="form-input" id="txtNaci" name="fechNa" required/>
     
               <label for="txtorigen" class="form-label">Lugar de origen:</label>
     
-              <select name="menu" class="form-menu">
+              <select name="menu" id = "txtorigen" class="form-menu">
                 <option value="None">...</option>
                 <option value="Guayaquil">Guayaquil</option>
                 <option value="Quito">Quito</option>
@@ -95,11 +95,11 @@
     
               <label for="txtcorrreo" class="form-label">Correo de contacto:</label>
     
-              <input type="email" placeholder="Correo electrónico..." id="corrElect" class="form-input" name="corrElec" required/>
+              <input type="email" placeholder="Correo electrónico..." id="txtcorrreo" class="form-input" name="corrElec" required/>
     
               <label for="txtDetalles" class="form-label">Detalles:</label>
     
-              <textarea name="texto" class="form-textarea" rows="5" cols="30" placeholder="Detalles..." required></textarea>
+              <textarea name="texto" class="form-textarea" rows="5" id= "txtDetalles" cols="30" placeholder="Detalles..." required></textarea>
   
               <input  type="submit" class="btn-submit" value="Enviar" onclick="location.href='index.html';">
     

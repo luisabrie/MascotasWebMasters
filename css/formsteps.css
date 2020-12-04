@@ -57,7 +57,7 @@
   .multi-steps > li.is-active ~ li {
     color: #808080;
   }
-  .multi-steps > li.is-active ~ li:beforºe {
+  .multi-steps > li.is-active ~ li:before {
     background-color: #d8d8d8;
     border-color: #d8d8d8;
   }
