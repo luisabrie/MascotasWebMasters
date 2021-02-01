@@ -1,0 +1,75 @@
+
+  <button class="btn btn-warning mb-3 float-right text-uppercase" (click)="onAddMascota()"><i class="fa fa-plus"></i> Añadir Mascota</button>
+
+  
+    <!--Agregar Mascota -->
+    <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title">Añadir Mascota</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          
+          <form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="mascotaTitle"><i class="fa fa-pencil-square-o"></i></span>
+                  </div>
+                  <input type="text" id="name" formControlName="name" class="form-control" placeholder="Ingresa el nombre de la mascota."aria-label="name" aria-describedby="mascotaTitle">
+                </div>
+                <div class="errorMessage" *ngIf="name.touched && name.errors">
+                  <span *ngIf="name.hasError('required')">Se require el nombre de tu mascota.</span>
+                  <span *ngIf="name.hasError('maxlength')"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="mascotaDescription"><i class="fa fa-pencil-square-o"></i></span>
+                  </div>
+                  <textarea formControlName="description" class="form-control" placeholder="Describe a tu mascota - Max 150 caracteres" aria-label="Description" aria-describedby="mascotaDescription"></textarea>
+                </div>
+                <div class="errorMessage" *ngIf="description.touched && description.errors">
+                  <span *ngIf="description.hasError('required')">Se requiere la descripción de la mascota.</span>
+                  <span *ngIf="description.hasError('maxlength')">Solo se permiten 150 caracteres.</span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="form-group">
+                    <label class="control-label">Tipo de mascota</label>
+                    <div class="form-control radioButtons" formControlName="type">
+                        <label class="radio-inline">
+                          <input type="radio" required value="perro" name="type" id="type1">Perro
+                        </label>
+
+                        <label class="radio-inline">
+                          <input type="radio" required value="gato" name="type" id="type2" >Gato
+                        </label>
+
+                        <label class="radio-inline">
+                          <input type="radio" required value="otro" name="type" id="type3">Otro
+                        </label>
+                      
+                    </div>
+                
+                  </div>
+                  <div class="errorMessage" *ngIf="type.touched && type.errors">
+                    <span *ngIf="type.hasError('required')">Se debe escoger un tipo de mascota.</span>
+                  
+                  </div>
+              </li>
+              <li class="list-group-item">
+                <button [disabled]="insertForm.invalid"  class="btn btn-warning btn-block">AÑADIR</button>
+              </li>
+            </ul>
+      
+          </form>
+      
+        </div>
+      </ng-template>
+    
+      <!--Final agregar mascota-->
