@@ -8,10 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule} from 'ngx-bootstrap/modal';
 import { AddMascotaComponent } from './addMascota/addMascota.component';
 import { HttpClientModule } from "@angular/common/http";
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegistrarComponent } from './components/user/registrar/registrar.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent
+    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent
   ],
   imports: [
     HttpClientModule,
