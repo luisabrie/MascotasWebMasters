@@ -16,7 +16,7 @@ export class AddMascotaComponent implements OnInit {
   name: FormControl;
   description: FormControl;
 
-  
+
    // Add Modal
   @ViewChild('template') modal : TemplateRef<any>;
   modalMessage : string;
@@ -28,16 +28,16 @@ export class AddMascotaComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private fb: FormBuilder,
-    //private mascotaService : MascotaserviceService,
-    ) { 
+    private mascotaService : MascotaserviceService,
+    ) {
 
   }
 
   onSubmit(){
-     
+
   }
 
-  onAddMascota() 
+  onAddMascota()
   {
       this.modalRef = this.modalService.show(this.modal);
   }
@@ -47,15 +47,15 @@ export class AddMascotaComponent implements OnInit {
 
       this.name = new FormControl('', [Validators.required, Validators.maxLength(50)]);
       this.description = new FormControl('', [Validators.required, Validators.maxLength(150)]);
-      
+
       this.insertForm = this.fb.group({
 
               'name' : this.name,
               'description' : this.description,
-      
+
               });
 
-    
+
   }
 
 }

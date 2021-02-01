@@ -7,12 +7,14 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule} from 'ngx-bootstrap/modal';
 import { AddMascotaComponent } from './addMascota/addMascota.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
