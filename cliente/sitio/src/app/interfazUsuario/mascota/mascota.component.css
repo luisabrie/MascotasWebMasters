@@ -1,0 +1,26 @@
+.btn-circle.btn-sm { 
+    width: 30px; 
+    height: 30px; 
+    padding: 6px 0px; 
+    border-radius: 15px; 
+    font-size: 12px; 
+    text-align: center; 
+} 
+
+.request{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: space-evenly;
+}
+
+.cardData{
+    margin: 5px;
+    width: 45%;
+    padding: 8px;
+}
+
+.sent{
+    padding: 14px;
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Mascota } from './mascota/mascota.model';
+import { Mascota } from './interfazUsuario/mascota/mascota.model';
 import { MascotaserviceService } from "./services/mascotaservice.service";
 @Component({
   selector: 'app-root',
@@ -9,11 +9,18 @@ import { MascotaserviceService } from "./services/mascotaservice.service";
 export class AppComponent {
   title = 'sitio';
   cards = [];
+  card: Mascota;
   
 
   constructor(
-    //private mascotaService : MascotaserviceService
+    private mascotaService : MascotaserviceService
     ) {
+      this.card = new Mascota()
+      this.card.estado = "aceptada"
+      this.card.name = "reina"
+      this.card.Id = 234
+      this.card.description="pequeña"
+      this.cards.push(this.card)
     
     
   }

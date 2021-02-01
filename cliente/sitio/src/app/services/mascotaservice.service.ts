@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Mascota } from '../mascota/mascota.model';
+import { Mascota } from '../interfazUsuario/mascota/mascota.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class MascotaserviceService {
   private updateUrl: string = "/mascotas/updatemascota/";
   private deleteUrl: string = "/mascotas/deletemascota/";
   private mascotaUrl : string = "/mascotas/addmascota/";
+  private mascota$: Observable<Mascota[]>;
 
   constructor(private http: HttpClient) { }
 
@@ -36,5 +37,9 @@ export class MascotaserviceService {
         return this.http.delete(this.deleteUrl + id);
     }
 
+    clearCache() 
+    {
+        this.mascota$ = null;
+    }
 
 }
