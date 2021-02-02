@@ -12,10 +12,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrarComponent } from './components/user/registrar/registrar.component';
 import { InterfazUsuarioComponent } from './interfazUsuario/interfazUsuario.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
+import { ContactarComponent } from './components/contactar/contactar.component';
+import { EquipoComponent } from './components/equipo/equipo.component';
+import { AcercaComponent } from './components/acerca/acerca.component';
+import { CasosComponent } from './components/casos/casos.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent
+    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent
   ],
   imports: [
     HttpClientModule,

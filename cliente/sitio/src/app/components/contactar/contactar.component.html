@@ -1,0 +1,66 @@
+<header class="masthead">
+    <div class="container h-100">
+        <div  id="contN" class="row h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-10 align-self-end">
+                <hr class="divider my-3" />
+                <h1 class="text-white-75 font-weight-bold">Contáctanos</h1>
+                <hr class="divider my-4" />
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 font-weight-light mb-5"></p>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<!--Noticias-->
+<div class="contenedor">
+
+  <form action="./" method="POST" class="form">
+
+
+      <label for="txtNombre" class="form-label">Nombre:</label>
+
+      <input type="text" placeholder="Nombre..." id="txtNombre" class="form-input" name="usuario" required/>
+
+      <label for="txtNaci" class="form-label">Fecha de Nacimiento:</label>
+
+      <input type="date"  class="form-input" id="txtNaci" name="fechNa" required/>
+
+      <label for="txtorigen" class="form-label">Lugar de origen:</label>
+
+      <select name="menu" id = "txtorigen" class="form-menu">
+        <option value="None">...</option>
+        <option value="Guayaquil">Guayaquil</option>
+        <option value="Quito">Quito</option>
+        <option value="Cuenca">Cuenca</option>
+        <option value="Machala">Machala</option>
+        <option value="Ibarra">Ibarra</option>
+        <option value="Durán">Durán</option>
+        <option value="Manta">Manta</option>
+        <option value="Latacunga">Latacunga</option>
+        <option value="Loja">Loja</option>
+        <option value="Esmeraldas">Esmeraldas</option>
+        <option value="Milagro">Milagro</option>
+        <option value="Babahoyo">Babahoyo</option>
+        <option value="Daule">Daule</option>
+        <option value="Santa Elena">Santa Elena</option>
+        <option value="Samborondón">Samborondón</option>
+      </select>
+
+      <label for="txtcorrreo" class="form-label">Correo de contacto:</label>
+
+      <input type="email" placeholder="Correo electrónico..." id="txtcorrreo" class="form-input" name="corrElec" required/>
+
+      <label for="txtDetalles" class="form-label">Detalles:</label>
+
+      <textarea name="texto" class="form-textarea" rows="5" id= "txtDetalles" cols="30" placeholder="Detalles..." required></textarea>
+
+      <input  type="submit" class="btn-submit" value="Enviar" onclick="location.href='index.html';">
+
+
+
+  </form>
+</div>
