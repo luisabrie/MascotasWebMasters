@@ -20,5 +20,64 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.mascota = require("./mascota.model.js")(sequelize, Sequelize);
+db.usuario = require("./usuario.model.js")(sequelize, Sequelize);
+db.telefono = require("./telefono.model.js")(sequelize, Sequelize);
+db.noticia = require("./noticia.model.js")(sequelize, Sequelize);
+db.comentario = require("./comentario.model.js")(sequelize, Sequelize);
+db.direccion = require("./direccion.model.js")(sequelize, Sequelize);
+
+db.canton = require("./canton.model.js")(sequelize, Sequelize);
+db.provincia = require("./provincia.model.js")(sequelize, Sequelize);
+db.region = require("./region.model.js")(sequelize, Sequelize);
+
+db.pago = require("./pago.model.js")(sequelize, Sequelize);
+db.mediopago = require("./medioPago.model.js")(sequelize, Sequelize);
+
+db.plan = require("./plan.model.js")(sequelize, Sequelize);
+db.redes = require("./redes.model.js")(sequelize, Sequelize);
+db.redesPlan = require("./redesPlan.model.js")(sequelize, Sequelize);
+
+
+db.usuario.hasMany(db.telefono);
+db.telefono.belongsTo(db.usuario);
+
+db.usuario.hasMany(db.noticia);
+db.noticia.belongsTo(db.usuario);
+
+db.usuario.hasMany(db.comentario);
+db.noticia.hasMany(db.comentario);
+db.comentario.belongsTo(db.usuario);
+db.comentario.belongsTo(db.noticia);
+
+db.direccion.hasMany(db.usuario);
+db.usuario.belongsTo(db.direccion);
+
+db.canton.hasMany(db.direccion);
+db.direccion.belongsTo(db.canton);
+
+db.provincia.hasMany(db.canton);
+db.canton.belongsTo(db.provincia);
+
+db.region.hasMany(db.provincia);
+db.provincia.belongsTo(db.region);
+
+db.mediopago.hasMany(db.pago);
+db.pago.belongsTo(db.mediopago);
+
+db.plan.hasMany(db.redesPlan);
+db.redesPlan.belongsTo(db.plan);
+
+db.redes.hasMany(db.redesPlan);
+db.redesPlan.belongsTo(db.redes)
+
+
+
+
+
+
+
+
+
+
 
 module.exports = db;
