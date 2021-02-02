@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Mascota } from './mascota/mascota.model';
 import { MascotaserviceService } from "../services/mascotaservice.service";
+
+
+import { AddMascotaComponent } from './addMascota/addMascota.component'
+
 @Component({
   selector: 'app-interfazUsuario',
   templateUrl: './interfazUsuario.component.html',
