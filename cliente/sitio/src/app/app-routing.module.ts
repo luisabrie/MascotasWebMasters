@@ -9,7 +9,7 @@ import { InterfazUsuarioComponent } from  'src/app/interfazUsuario/interfazUsuar
 const routes: Routes = [
   {path: 'user/login', component:  LoginComponent},
   {path: 'user/registrar', component:  RegistrarComponent},
-  {path: './interfazUsuario', component: InterfazUsuarioComponent}
+  {path: 'interfazUsuario', component: InterfazUsuarioComponent}
 ];
 
 @NgModule({

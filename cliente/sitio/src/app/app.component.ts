@@ -8,29 +8,15 @@ import { MascotaserviceService } from "./services/mascotaservice.service";
 })
 export class AppComponent {
   title = 'sitio';
-  cards = [];
-  card: Mascota;
   
 
-  constructor(
-    private mascotaService : MascotaserviceService
-    ) {
-      this.card = new Mascota()
-      this.card.estado = "aceptada"
-      this.card.name = "reina"
-      this.card.Id = 234
-      this.card.description="pequeña"
-      this.cards.push(this.card)
+  constructor(    ) {
     
     
   }
 
   ngOnInit() {
-    //this.getMascota();
-  }
-
-  getMascota(): void {
-    //this.cards = this.mascotaService.getMascotas();
+  
   }
 
 

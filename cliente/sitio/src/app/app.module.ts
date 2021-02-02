@@ -11,10 +11,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegistrarComponent } from './components/user/registrar/registrar.component';
+import { InterfazUsuarioComponent } from './interfazUsuario/interfazUsuario.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent
+    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent
   ],
   imports: [
     HttpClientModule,
