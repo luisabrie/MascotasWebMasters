@@ -6,7 +6,7 @@
                 <div class="card_login">
                     <div class="card">
                         <div class="card-body text-center">
-                            <form action="">
+                            <form #formLogin="ngForm" (ngSubmit)="onLogin()">
 
                                 <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
                                     <!--div class="form-group">
