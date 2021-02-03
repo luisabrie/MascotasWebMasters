@@ -11,6 +11,7 @@ var mascotaRouter = require("./routes/mascota.routes");
 var usuarioRouter = require("./routes/usuario.routes");
 var authRouter = require("./routes/auth.routes");
 var userRouter = require("./routes/user.routes");
+var direccionRouter = require("./routes/direccion.routes");
 
 var app = express();
 
@@ -56,6 +57,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/mascotas", mascotaRouter);
 app.use("/api/usuarios", usuarioRouter);
+app.use("/api/direcciones", direccionRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/test", userRouter);
 
