@@ -14,9 +14,11 @@ export class AddMascotaComponent implements OnInit {
 
   // For the FormControl - Add mascota
   insertForm: FormGroup;
-  name: FormControl;
-  description: FormControl;
-  type: FormControl;
+  nombre: FormControl;
+  descripcion: FormControl;
+  tipo: FormControl;
+  raza: FormControl;
+  color: FormControl;
 
 
    // Add Modal
@@ -68,16 +70,20 @@ export class AddMascotaComponent implements OnInit {
 
   ngOnInit() {
 
-      this.name = new FormControl('', [Validators.required, Validators.maxLength(50)]);
-      this.description = new FormControl('', [Validators.required, Validators.maxLength(150)]);
-      this.type = new FormControl('', [Validators.required]);
+      this.nombre = new FormControl('', [Validators.required, Validators.maxLength(50)]);
+      this.descripcion = new FormControl('', [Validators.required, Validators.maxLength(150)]);
+      this.tipo = new FormControl('', [Validators.required]);
+      this.raza= new FormControl('', [Validators.required, Validators.maxLength(50)]);
+      this.color = new FormControl('', [Validators.required, Validators.maxLength(50)]);
+
 
       this.insertForm = this.fb.group({
 
-              'name' : this.name,
-              'description' : this.description,
-              'type': this.type,
-
+              'nombre' : this.nombre,
+              'descripcion' : this.descripcion,
+              'tipo': this.tipo,
+              'raza': this.raza,
+              'color': this.color,
               });
 
 

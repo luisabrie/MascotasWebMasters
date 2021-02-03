@@ -1,11 +1,26 @@
 <div class="card" style="width: 18rem;">
     <!--img class="card-img-top" src="..." alt="Card image cap"-->
     <div class="card-body">
-      <div *ngIf="estado=='aceptada'" class="text-right">
+      <div *ngIf="verificacion==true" class="text-right">
         <button type="button" class="btn btn-dark btn-circle btn-sm" (click)=onDisplay()><i class="fa fa-info"></i></button>
       </div>
-      <h5 class="card-title">{{mascota.name}}</h5>
-      <p class="card-text">{{mascota.description}}</p>
+      <div *ngIf="verificacion==false" class="text-right">
+        <button type="button" class=" invisible btn btn-dark btn-circle btn-sm"><i class="fa fa-info"></i></button>
+      </div>
+      <h5 class="card-title">{{mascota.nombre}}</h5>
+      <p class="card-text">{{mascota.descripcion}}</p>
+      <div class="datosM">
+        <p class="title">Raza:</p>
+        <p class="card-text">{{mascota.raza}}</p>
+      </div>
+      <div class="datosM">
+        <p class="title">Color:</p>
+        <p class="card-text"> {{mascota.color}}</p>
+      </div>
+      <div class="datosM">
+        <p class="title">Tipo:</p>
+        <p class="card-text">{{mascota.tipo}}</p>
+      </div>
       <div class="btn-group mt-2" role="group">
         <button type="button" class="btn btn-success" (click)= onUpdateModal(mascota)><i class="fa fa-edit"></i></button>
         <button type="button" class="btn btn-danger" (click)=onDelete(mascota)><i class="fa fa-trash-alt"></i></button>       
@@ -25,10 +40,10 @@
     
     <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
       <ul class="list-group">
-        <li class="list-group-item" [hidden]="_id">
+        <li class="list-group-item" [hidden]="id">
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="productId"><i class="fa fa-key"></i></span>
+              <span class="input-group-text" id="mascotaId"><i class="fa fa-key"></i></span>
             </div>
             <input type="text" class="form-control" formControlName="id" />
           </div>
@@ -39,11 +54,11 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="mascotaTitle"><i class="fa fa-pencil-square-o"></i></span>
                 </div>
-                <input type="text" id="name" formControlName="name" class="form-control" placeholder="Ingresa el nombre de la mascota." aria-label="name" aria-describedby="mascotaTitle">
+                <input type="text" id="nombre" formControlName="nombre" class="form-control" placeholder="Ingresa el nombre de la mascota." aria-label="nombre" aria-describedby="mascotaTitle">
             </div>
-            <div *ngIf="_name.touched && _name.errors" class="errorMessage">
-                <span *ngIf="_name.hasError('required')">Se require el nombre de la mascota.</span>
-                <span *ngIf="_name.hasError('maxlength')"></span>
+            <div *ngIf="_nombre.touched && _nombre.errors" class="errorMessage">
+                <span *ngIf="_nombre.hasError('required')">Se require el nombre de la mascota.</span>
+                <span *ngIf="_nombre.hasError('maxlength')"></span>
             </div>
         </li>
         <li class="list-group-item">
@@ -51,13 +66,37 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="mascotaDescription"><i class="fa fa-pencil-square-o"></i></span>
                 </div>
-                <textarea formControlName="description" class="form-control" placeholder="Describe a tu mascota - Max 150 caracteres" aria-label="Description" aria-describedby="mascotaDescription"></textarea>
+                <textarea formControlName="descripcion" class="form-control" placeholder="Describe a tu mascota - Max 150 caracteres" aria-label="Descripcion" aria-describedby="mascotaDescription"></textarea>
             </div>
-            <div *ngIf="_description.touched && _description.errors" class="errorMessage">
-                <span *ngIf="_description.hasError('required')">Se requiere la descripción de la mascota.</span>
-                <span *ngIf="_description.hasError('maxlength')">Solo se permiten 150 caracteres.</span>
+            <div *ngIf="_descripcion.touched && _descripcion.errors" class="errorMessage">
+                <span *ngIf="_descripcion.hasError('required')">Se requiere la descripción de la mascota.</span>
+                <span *ngIf="_descripcion.hasError('maxlength')">Solo se permiten 150 caracteres.</span>
             </div>
         </li>
+        <li class="list-group-item">
+          <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="mascotaRaza"><i class="fa fa-pencil-square-o"></i></span>
+              </div>
+              <input type="text" id="raza" formControlName="raza" class="form-control" placeholder="Ingresa la raza de la mascota." aria-label="raza" aria-describedby="mascotaRaza">
+          </div>
+          <div *ngIf="_raza.touched && _raza.errors" class="errorMessage">
+              <span *ngIf="_raza.hasError('required')">Se require la raza de la mascota.</span>
+              <span *ngIf="_raza.hasError('maxlength')"></span>
+          </div>
+      </li>
+      <li class="list-group-item">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="mascotaColor"><i class="fa fa-pencil-square-o"></i></span>
+            </div>
+            <input type="text" id="color" formControlName="color" class="form-control" placeholder="Ingresa el color de la mascota." aria-label="color" aria-describedby="mascotaColor">
+        </div>
+        <div *ngIf="_color.touched && _color.errors" class="errorMessage">
+            <span *ngIf="_color.hasError('required')">Se require el color de la mascota.</span>
+            <span *ngIf="_color.hasError('maxlength')"></span>
+        </div>
+    </li>
 
        
         <li class="list-group-item">

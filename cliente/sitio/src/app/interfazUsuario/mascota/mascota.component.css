@@ -24,3 +24,13 @@
 .sent{
     padding: 14px;
 }
+
+.datosM{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.title{
+    font-weight: bold;
+
+}

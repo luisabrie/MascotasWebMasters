@@ -1,6 +1,9 @@
-export class Mascota{
-    Id: number;
-    name: string;
-    description: string;
-    estado: string;
+export interface Mascota{
+    id: number;
+    nombre: string;
+    descripcion: string;
+    tipo: string;
+    raza: string;
+    color: string;
+    verificacion: boolean;
 }

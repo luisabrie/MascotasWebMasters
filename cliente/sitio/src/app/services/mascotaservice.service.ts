@@ -1,28 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { catchError, retry, shareReplay } from 'rxjs/operators';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Mascota } from '../interfazUsuario/mascota/mascota.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MascotaserviceService {
-  private updateUrl: string = "/mascotas/updatemascota/";
-  private deleteUrl: string = "/mascotas/deletemascota/";
-  private mascotaUrl : string = "/mascotas/addmascota/";
+  private updateUrl: string = "http://localhost:3000/api/mascotas/updatemascota/";
+  private deleteUrl: string = "http://localhost:3000/api/mascotas/deletemascota/";
+  private mascotaUrl : string = "http://localhost:3000/api/mascotas/addmascota/";
+  private baseUrl : string = "http://localhost:3000/api/mascotas";
   private mascota$: Observable<Mascota[]>;
 
   constructor(private http: HttpClient) { }
 
   //get mascotas
-  getMascotas(): Observable<any> {
+  getMascotas(): Observable<Mascota[]> {
     //return mascotas ;
-    return this.http.get("http://localhost:3000/mascotas");
+    if (!this.mascota$) 
+        {
+            this.mascota$ = this.http.get<Mascota[]>(this.baseUrl).pipe(shareReplay());
+        }
+
+         // if products cache exists return it
+        return this.mascota$;
   }
+
   //update mascota
   updateMascota(id: number, editMascota: Mascota): Observable<Mascota>{
-    return this.http.put<Mascota>(this.updateUrl + id, editMascota);
+    return this.http.put<Mascota>(this.updateUrl, editMascota);
   }
 
   //insert mascota
@@ -34,7 +42,8 @@ export class MascotaserviceService {
   //delete mascota
   deleteMascota(id: number) : Observable<any>
     {
-        return this.http.delete(this.deleteUrl + id);
+        return this.http.delete(this.deleteUrl+id);
+        
     }
 
     clearCache() 

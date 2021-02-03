@@ -14,9 +14,11 @@ export class MascotaComponent implements OnInit {
 
   // actualizar mascota
   updateForm: FormGroup;
-  _name: FormControl;
-  _description: FormControl;
+  _nombre: FormControl;
+  _descripcion: FormControl;
   _id: FormControl;
+  _raza: FormControl;
+  _color: FormControl;
 
   //Info Modal
   @ViewChild('infoTemplate') viewmodal : TemplateRef<any>;
@@ -32,8 +34,8 @@ export class MascotaComponent implements OnInit {
 
 
   @Input('mascota') mascota: Mascota;
-  ID: number;
-  estado: string;
+  id: number;
+  verificacion: boolean;
 
 
   constructor(
@@ -44,14 +46,22 @@ export class MascotaComponent implements OnInit {
 
   }
 
-  onDelete(mascota: Mascota): void{
-   this.mascotaService.deleteMascota(this.ID)
+  onDelete(mascota : Mascota) : void{
+      this.mascotaService.deleteMascota(mascota.id).subscribe(result => 
+      {
+          this.mascotaService.clearCache();
+          this.mascotas$ = this.mascotaService.getMascotas();
+          this.mascotas$.subscribe(newlist => 
+          {
+              this.mascotas = newlist;
+          })
 
+      })
   }
 
-  onUpdate(mascota: Mascota): void{
+  onUpdate(): void{
     let editMascota = this.updateForm.value;
-    this.mascotaService.updateMascota(this.ID, editMascota).subscribe(
+    this.mascotaService.updateMascota(this.id, editMascota).subscribe(
       result => 
       {
           console.log('Datos de mascota actualizados');
@@ -75,16 +85,20 @@ export class MascotaComponent implements OnInit {
   }
   onUpdateModal(mascotaEdit: Mascota) : void
     {
-      this.modalRef = this.modalService.show(this.editmodal);
-        this._id.setValue(mascotaEdit.Id);
-        this._name.setValue(mascotaEdit.name);
-        this._description.setValue(mascotaEdit.description);
+        this._id.setValue(mascotaEdit.id)
+        this._nombre.setValue(mascotaEdit.nombre);
+        this._descripcion.setValue(mascotaEdit.descripcion);
+        this._raza.setValue(mascotaEdit.raza);
+        this._color.setValue(mascotaEdit.color);
 
         this.updateForm.setValue({
-            'id' : this._id.value,
-            'name' : this._name.value,
-            'description' : this._description.value,
+            'id': this._id.value,
+            'nombre' : this._nombre.value,
+            'descripcion' : this._descripcion.value,
+            'raza': this._raza.value,
+            'color': this._color.value,
          });
+         this.modalRef = this.modalService.show(this.editmodal);
         
 
     }
@@ -92,18 +106,22 @@ export class MascotaComponent implements OnInit {
 
 
   ngOnInit() {
-    this.ID = this.mascota.Id
-    this.estado = this.mascota.estado
+    this.id = this.mascota.id
+    this.verificacion = this.mascota.verificacion
 
-    this._name = new FormControl('',[Validators.required, Validators.maxLength(50)]); ;
-    this._description = new FormControl('', [Validators.required, Validators.maxLength(150)]);
-    this._id = new FormControl();
+    this._nombre = new FormControl('',[Validators.required, Validators.maxLength(50)]); ;
+    this._descripcion = new FormControl('', [Validators.required, Validators.maxLength(150)]);
+    this._id = new FormControl('');
+    this._raza = new FormControl('',[Validators.required, Validators.maxLength(50)]);
+    this._color = new FormControl('',[Validators.required, Validators.maxLength(50)]);
 
     this.updateForm = this.fb.group(
         {
-            'id' : this._id,
-            'name' : this._name,
-            'description' : this._description,
+            'id': this._id,
+            'nombre' : this._nombre,
+            'descripcion' : this._descripcion,
+            'raza': this._raza,
+            'color': this._color,
         });
     
 

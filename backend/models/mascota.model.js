@@ -1,11 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
   const Mascota = sequelize.define("mascota", {
-    name: {
+    nombre: {
       type: DataTypes.STRING
     },
-    description: {
+    descripcion: {
       type: DataTypes.STRING
-    }
+    },
+    tipo: {
+      type: DataTypes.STRING
+    },
+    raza: {
+      type: DataTypes.STRING
+    },
+    color: {
+      type: DataTypes.STRING
+    },
+    verificacion: {
+      type: DataTypes.BOOLEAN
+    },
+  
+
   });
 
   return Mascota;
