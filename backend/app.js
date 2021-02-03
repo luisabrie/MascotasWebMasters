@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 var mascotaRouter = require('./routes/mascota.routes');
+var usuarioRouter = require('./routes/usuario.routes');
+
 
 var app = express();
 
@@ -37,6 +39,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/mascotas',mascotaRouter);
+app.use('/api/usuarios',usuarioRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
