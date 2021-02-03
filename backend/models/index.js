@@ -75,8 +75,8 @@ db.noticia.hasMany(db.comentario);
 db.comentario.belongsTo(db.usuario);
 db.comentario.belongsTo(db.noticia);
 
-db.direccion.hasMany(db.usuario);
-db.usuario.belongsTo(db.direccion);
+//db.direccion.hasMany(db.usuario);
+//db.usuario.belongsTo(db.direccion);
 
 db.canton.hasMany(db.direccion);
 db.direccion.belongsTo(db.canton);

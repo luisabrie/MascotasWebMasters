@@ -1,7 +1,7 @@
 module.exports = {
   HOST: "localhost",
   USER: "root",
-  PASSWORD: "loadri11",
+  PASSWORD: "classsql",
   DB: "volveracasa",
   dialect: "mysql",
   pool: {
