@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, TemplateRef, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef, OnInit, EventEmitter, Output } from '@angular/core';
 import { Mascota } from './mascota.model';
 import { MascotaserviceService } from "../../services/mascotaservice.service";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -12,6 +12,9 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class MascotaComponent implements OnInit {
 
+  @Output()
+  notify: EventEmitter<Mascota[]> = new EventEmitter<Mascota[]>();
+
   // actualizar mascota
   updateForm: FormGroup;
   _nombre: FormControl;
@@ -24,6 +27,8 @@ export class MascotaComponent implements OnInit {
   @ViewChild('infoTemplate') viewmodal : TemplateRef<any>;
   // Update Modal
   @ViewChild('editTemplate') editmodal : TemplateRef<any>;
+  //Delete Modal
+  @ViewChild('deleteTemplate') deletemodal : TemplateRef<any>;
   
       // Modal properties
       modalMessage : string;
@@ -34,6 +39,7 @@ export class MascotaComponent implements OnInit {
 
 
   @Input('mascota') mascota: Mascota;
+
   id: number;
   verificacion: boolean;
 
@@ -46,18 +52,22 @@ export class MascotaComponent implements OnInit {
 
   }
 
-  onDelete(mascota : Mascota) : void{
-      this.mascotaService.deleteMascota(mascota.id).subscribe(result => 
+  onDelete() : void
+  {
+      this.mascotaService.deleteMascota(this.id).subscribe(result => 
       {
-          this.mascotaService.clearCache();
-          this.mascotas$ = this.mascotaService.getMascotas();
+        this.mascotas$ = this.mascotaService.getMascotas();
           this.mascotas$.subscribe(newlist => 
           {
               this.mascotas = newlist;
+              
           })
-
       })
+      this.modalRef.hide();
+      this.notify.emit(this.mascotas);
   }
+
+
 
   onUpdate(): void{
     let editMascota = this.updateForm.value;
@@ -73,11 +83,16 @@ export class MascotaComponent implements OnInit {
 
                 this.modalRef.hide();
           });
+          this.notify.emit(this.mascotas);
       },
           error => console.log('No se pudo realizar la actualización')
       )
 
    
+  }
+
+  onDeleteModal(){
+    this.modalRef = this.modalService.show(this.deletemodal);
   }
 
   onDisplay(){

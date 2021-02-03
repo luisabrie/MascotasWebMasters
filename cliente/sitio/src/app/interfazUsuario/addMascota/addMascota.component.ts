@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, TemplateRef, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef, OnInit, Output, EventEmitter } from '@angular/core';
 import { Mascota } from '../mascota/mascota.model';
 import { MascotaserviceService } from "../../services/mascotaservice.service";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -11,6 +11,9 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./addMascota.component.css']
 })
 export class AddMascotaComponent implements OnInit {
+
+  @Output()
+  notify: EventEmitter<Mascota[]> = new EventEmitter<Mascota[]>();
 
   // For the FormControl - Add mascota
   insertForm: FormGroup;
@@ -54,6 +57,7 @@ export class AddMascotaComponent implements OnInit {
                 
                     });
                 console.log("Nueva mascota añadida");
+                this.notify.emit(this.mascotas)
 
             },
             error => console.log('No se pudo añadir nueva mascota')

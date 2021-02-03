@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry, shareReplay } from 'rxjs/operators';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Mascota } from '../interfazUsuario/mascota/mascota.model';
 
 @Injectable({
@@ -43,7 +43,6 @@ export class MascotaserviceService {
   deleteMascota(id: number) : Observable<any>
     {
         return this.http.delete(this.deleteUrl+id);
-        
     }
 
     clearCache() 

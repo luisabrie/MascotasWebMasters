@@ -2,13 +2,13 @@
 
 <div class="container mt-2">
 
-    <app-addMascota></app-addMascota>
+    <app-addMascota (notify)="parentMethod($event)"></app-addMascota>
 
     <div class="row app-container p-2 ">
         
         <div class ="col-lg-10 offset-md-1 content">
             <div *ngFor="let mascota of mascotas">
-                <app-mascota [mascota]="mascota"></app-mascota>
+                <app-mascota (notify)="parentMethod($event)" [mascota]="mascota"></app-mascota>
             </div>
         </div>
         

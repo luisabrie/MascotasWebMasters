@@ -88,23 +88,12 @@ exports.delete = (req, res) => {
     });
     return;
   }
-  datos = req.params
   Mascota.destroy({
     where: {
-      id: datos['id']
+      id: req.params.id
     }
   })
-  .then(data => {
-    res.sendStatus(data)
 
-  })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "Some error occurred"
-      });
-    });
-  
 };
 
 

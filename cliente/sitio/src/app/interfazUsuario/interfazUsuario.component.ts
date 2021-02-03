@@ -32,4 +32,8 @@ export class InterfazUsuarioComponent {
   });
   }
 
+  parentMethod(data){
+    this.ngOnInit();
+  }
+
 }
