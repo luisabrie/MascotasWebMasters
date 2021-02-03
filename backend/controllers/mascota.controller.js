@@ -1,6 +1,15 @@
+const { usuario } = require("../models");
 const db = require("../models");
 const Mascota= db.mascota;
 const Op = db.Sequelize.Op;
+const Anuncio= db.anuncio;
+const Usuario= db.usuario;
+const EstadoMascota= db.estadoMascota;
+const Direccion = db.direccion;
+const Ubicacion = db.ubicacion;
+const Pago = db.pago;
+const MedioPago = db.mediopago;
+
 
 // Create and Save Mascota
 exports.create = (req, res) => {
@@ -96,4 +105,184 @@ exports.delete = (req, res) => {
 
 };
 
+//devuelve todos los anuncios
+exports.getAnuncios = (req, res) => {
+  Anuncio.findAll({
+    where:{},
+    include: [Mascota]
+  }
+
+  )
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving maestros."
+      });
+    });
+};
+
+//devuelve anuncios que aun no han sido aprobados
+exports.getPeticiones = (req, res) => {
+  Anuncio.findAll({
+    where:{
+      fecha_inicio: null,
+    },
+    include: [Mascota]
+  }
+
+  )
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving maestros."
+      });
+    });
+};
+
+//devuelve mascotas por id de usuario
+exports.findbyUser = (req, res) => {
+  Mascota.findAll({
+    where:{
+      usuarioId: req.params.id
+    },
+  }
+
+  )
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving maestros."
+      });
+    });
+};
+
+
+
+
+//devuelve todas las mascotas con sus estados y sus tipos
+exports.findbyTipo = (req, res) => {
+  EstadoMascota.findAll({
+    where:{
+    },
+    include: [Mascota]
+  }
+  )
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving maestros."
+      });
+    });
+};
+
+//devuelve datos de mascota, usuario y ubicacion de un anuncio 
+exports.findPeticionbyId = (req, res) => {
+  Anuncio.findAll({
+    where:{
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Mascota,
+        include: [Usuario,Ubicacion]
+      }
+    ]
+  }).then(data=>{
+    res.send(data)
+  })
+};
+
+
+//devuelve datos de pago de un anuncio por idAnuncio
+exports.findPagoOfAnunciobyId = (req, res) => {
+  Anuncio.findAll({
+    where:{
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Pago,
+        include: [MedioPago]
+      }
+    ]
+  }).then(data=>{
+    res.send(data)
+  })
+};
+
+
+//devuelve anuncios de las mascotas de un usuario especifico con idUsuario
+exports.findAnunciosbyUserId = (req, res) => {
+  Usuario.findAll({
+    where:{
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Mascota,
+        include: [Anuncio]
+      }
+    ]
+  }).then(data=>{
+    res.send(data)
+  })
+};
+
+
+//devuelve una peticion/anuncio para realizar la verificacion
+exports.verifybyId = (req, res) => {
+  Anuncio.findAll({
+    where:{
+      id: req.params.id
+    },
+    include: [
+      {
+        model: Mascota,
+        include: [Usuario, Ubicacion]
+      }
+    ]
+  }).then(data=>{
+    res.send(data)
+  })
+};
+
+
+exports.updatePagoStatus = (req, res) => {
+  Anuncio.findAll({
+    where:{
+      id: req.body.id
+    },
+    include: [Pago]
+  })
+  .then(data=>{
+    console.log(data[0].pagos[0].id)
+    Pago.update(
+      {
+        fecha_pago: req.body.fecha_pago,
+        numero_confirmacion: req.body.numero_confirmacion,
+        fecha_autorizacion: req.body.fecha_autorizacion
+      }, 
+      {
+      where: {
+        id: data[0].pagos[0].id
+      }
+    })
+    .then(data => {
+      res.send(data)
+    })
+    }
+    )
+};
 

@@ -70,6 +70,11 @@ db.telefono.belongsTo(db.usuario);
 db.usuario.hasMany(db.noticia);
 db.noticia.belongsTo(db.usuario);
 
+
+db.usuario.hasMany(db.mascota);
+db.mascota.belongsTo(db.usuario);
+
+
 db.usuario.hasMany(db.comentario);
 db.noticia.hasMany(db.comentario);
 db.comentario.belongsTo(db.usuario);
