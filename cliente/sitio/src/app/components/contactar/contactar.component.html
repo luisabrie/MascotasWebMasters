@@ -40,6 +40,9 @@
 
         <li class="list-group-item">
           <div class="input-group">
+            <label class="form-control bg-secondary text-white" >Seleccione la fecha de nacimiento</label>
+          </div>
+          <div class="input-group">
             <input type="date" id="fecha_nacimiento" formControlName="fecha_nacimiento" class="form-control" placeholder="Seleccione fecha de nacimiento."aria-label="fecha_nacimiento" aria-describedby="usuarioNacimiento">
           </div>
           <div class="errorMessage" *ngIf="fecha_nacimiento.touched && fecha_nacimiento.errors">
@@ -50,7 +53,7 @@
 
         <li class="list-group-item">
             <div class="input-group">
-                <label class="form-control" >Seleccione un lugar de origen</label>
+                <label class="form-control bg-secondary text-white" >Seleccione un lugar de origen</label>
               </div>
             <select formControlName="lugar_origen" class="form-control">
                 <option *ngFor="let lugar of lugares" [ngValue]="lugar.id">{{lugar.name}}</option>
@@ -73,11 +76,12 @@
 
         <li class="list-group-item">
             <div class="input-group">
-                <textarea class="form-control" rows="10"  formControlName="detalles" placeholder="Ingrese algún detalle extra."aria-label="detalles" aria-describedby="usuarioDetalles">
-
-                </textarea>
-              <!--input type="text" id="detalles"  class="form-control" -->
+                <textarea class="form-control" rows="10"  formControlName="detalles" placeholder="Ingrese algún detalle extra."aria-label="detalles" aria-describedby="usuarioDetalles"></textarea>
             </div>
+            <p>
+              {{detalles.value.length}}/300 caracteres permitidos
+            </p>
+            <h3 *ngIf="detalles.hasError('maxlength')">Se pasó del limite permitido</h3>
            
           </li>
         

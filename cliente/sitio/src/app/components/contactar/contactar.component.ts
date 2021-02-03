@@ -36,17 +36,18 @@ export class ContactarComponent implements OnInit {
     }
     onSubmit(){
       let newUsuario = this.insertForm.value;
+      console.log(newUsuario)
   
         
   
     }
   ngOnInit() {
 
-    this.nombre = new FormControl('', [Validators.required, Validators.maxLength(150)]);
+    this.nombre = new FormControl('', [Validators.required, Validators.maxLength(100)]);
     this.fecha_nacimiento = new FormControl('', [Validators.required, Validators.required]);
     this.lugar_origen = new FormControl('', [Validators.required]);
     this.correo = new FormControl('', [Validators.required]);
-    this.detalles= new FormControl('', [Validators.required, Validators.maxLength(200)]);
+    this.detalles= new FormControl('', [Validators.required, Validators.maxLength(300)]);
   
 
     this.insertForm = this.fb.group({

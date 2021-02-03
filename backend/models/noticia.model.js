@@ -2,12 +2,14 @@ module.exports = (sequelize, DataTypes) => {
     const Noticia = sequelize.define("noticia", {
         
         noticia: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
       },
 
       titulo: {
-        type: DataTypes.TEXT
+        type: DataTypes.STRING
       }
+
+      
     });
   
     return Noticia;

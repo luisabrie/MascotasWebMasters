@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 var mascotaRouter = require('./routes/mascota.routes');
+var noticiaRouter = require('./routes/noticia.routes');
+
 var usuarioRouter = require('./routes/usuario.routes');
 var direccionRouter = require('./routes/direccion.routes');
 
@@ -43,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/mascotas',mascotaRouter);
 app.use('/api/usuarios',usuarioRouter);
 app.use('/api/direcciones',direccionRouter);
+app.use('/api/noticias',noticiaRouter);
 
 
 
