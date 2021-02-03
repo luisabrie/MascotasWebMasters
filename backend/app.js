@@ -9,6 +9,8 @@ const cors = require("cors");
 
 var mascotaRouter = require('./routes/mascota.routes');
 var usuarioRouter = require('./routes/usuario.routes');
+var direccionRouter = require('./routes/direccion.routes');
+
 
 
 var app = express();
@@ -40,6 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/mascotas',mascotaRouter);
 app.use('/api/usuarios',usuarioRouter);
+app.use('/api/direcciones',direccionRouter);
+
 
 
 // catch 404 and forward to error handler
