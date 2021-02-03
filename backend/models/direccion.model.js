@@ -3,18 +3,17 @@ module.exports = (sequelize, DataTypes) => {
       calle_principal: {
         type: DataTypes.STRING
       },
-      calle_secundaria: {
-        type: DataTypes.STRING
-      },
-      referencia: {
+      calle_secundario: {
         type: DataTypes.STRING
       },
       numero: {
         type: DataTypes.STRING
       },
-  
-  
+      referencia: {
+          type: DataTypes.STRING
+      }
+      
     });
-  
+
     return Direccion;
   };
