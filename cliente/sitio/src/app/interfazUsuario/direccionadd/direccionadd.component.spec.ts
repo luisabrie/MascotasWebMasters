@@ -7,7 +7,7 @@ describe('DireccionaddComponent', () => {
   let fixture: ComponentFixture<DireccionaddComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       declarations: [ DireccionaddComponent ]
     })
     .compileComponents();

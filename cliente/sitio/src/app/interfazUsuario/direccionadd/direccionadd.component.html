@@ -1,1 +1,75 @@
-<p>direccionadd works!</p>
+<button class="btn btn-warning mb-3 float-right text-uppercase" (click)="onAddMascota()"><i class="fa fa-plus"></i> Añadir Direccion</button>
+
+  
+    <!--Agregar Mascota -->
+    <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title">Añadir Direccion</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          
+          <form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="mascotaTitle"><i class="fa fa-pencil-square-o"></i></span>
+                  </div>
+                  <input type="text" id="calle_principal" formControlName="calle_principal" class="form-control" placeholder="Ingresa el nombre de la calle principal."aria-label="calle_principal" aria-describedby="mascotaTitle">
+                </div>
+                <div class="errorMessage" *ngIf="calle_principal.touched && calle_principal.errors">
+                  <span *ngIf="calle_principal.hasError('required')">Se require el nombre de la calle principal.</span>
+                  <span *ngIf="calle_principal.hasError('maxlength')"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="mascotaDescription"><i class="fa fa-pencil-square-o"></i></span>
+                  </div>
+                  <textarea formControlName="calle_secundario" class="form-control" placeholder="Ingresa el nombre de la calle secundaria." aria-label="calle_secundario" aria-describedby="mascotaDescription"></textarea>
+                </div>
+                <div class="errorMessage" *ngIf="calle_secundario.touched && calle_secundario.errors">
+                  <span *ngIf="calle_secundario.hasError('required')">Se require el nombre de la calle secundaria.</span>
+                  <span *ngIf="calle_secundario.hasError('maxlength')">Solo se permiten 150 caracteres.</span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="mascotaRaza"><i class="fa fa-pencil-square-o"></i></span>
+                  </div>
+                  <input type="text" id="numero" formControlName="numero" class="form-control" placeholder="Ingresa el numero."aria-label="numero" aria-describedby="mascotaRaza">
+                </div>
+                <div class="errorMessage" *ngIf="numero.touched && numero.errors">
+                  <span *ngIf="numero.hasError('required')">Se require el numero.</span>
+                  <span *ngIf="numero.hasError('maxlength')"></span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="mascotaColor"><i class="fa fa-pencil-square-o"></i></span>
+                  </div>
+                  <input type="text" id="referencia" formControlName="referencia" class="form-control" placeholder="Ingrese una referencia."aria-label="referencia" aria-describedby="mascotaColor">
+                </div>
+                <div class="errorMessage" *ngIf="referencia.touched && referencia.errors">
+                  <span *ngIf="referencia.hasError('required')">Se require una referencia.</span>
+                  <span *ngIf="referencia.hasError('maxlength')"></span>
+                </div>
+              </li>
+              
+              <li class="list-group-item">
+                <button [disabled]="insertForm.invalid"  class="btn btn-warning btn-block">AÑADIR</button>
+              </li>
+            </ul>
+      
+          </form>
+      
+        </div>
+      </ng-template>
+    
+      <!--Final agregar mascota-->
