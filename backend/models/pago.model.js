@@ -4,21 +4,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       fecha_pago: {
-          type: DataTypes.INTEGER
+          type: DataTypes.DATE
       },
       fecha_autorizacion: {
-          type: DataTypes.INTEGER
+          type: DataTypes.DATE
       },
       fecha_verificacion: {
-          type: DataTypes.INTEGER
+          type: DataTypes.DATE
       },
       numero_confirmacion:{
           type: DataTypes.INTEGER
       }
-
-
-     
-      
     });
   
     return Pago;
