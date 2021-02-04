@@ -1,7 +1,7 @@
 import { Router } from "@angular/router"
-import { Component, Input, ViewChild, TemplateRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { ReactiveFormsModule, FormsModule, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -32,14 +32,11 @@ export class ContactarComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router){   
+    private router: Router){
     }
     onSubmit(){
       let newUsuario = this.insertForm.value;
       console.log(newUsuario)
-  
-        
-  
     }
   ngOnInit() {
 
@@ -48,10 +45,10 @@ export class ContactarComponent implements OnInit {
     this.lugar_origen = new FormControl('', [Validators.required]);
     this.correo = new FormControl('', [Validators.required]);
     this.detalles= new FormControl('', [Validators.required, Validators.maxLength(300)]);
-  
+
 
     this.insertForm = this.fb.group({
-            
+
             'nombre' : this.nombre,
             'fecha_nacimiento' : this.fecha_nacimiento,
             'lugar_origen': this.lugar_origen,

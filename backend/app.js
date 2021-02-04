@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const nodemailer = require("nodemailer");
 
 var mascotaRouter = require("./routes/mascota.routes");
 var adminRouter = require("./routes/admin.routes");
@@ -15,6 +16,7 @@ var userRouter = require("./routes/user.routes");
 var direccionRouter = require("./routes/direccion.routes");
 var noticiaRouter = require("./routes/noticia.routes");
 var planRouter = require("./routes/plan.routes");
+var contactUsRouter = require("./routes/contact-us.routes");
 
 var app = express();
 
@@ -91,6 +93,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/test", userRouter);
 app.use("/api/noticias", noticiaRouter);
 app.use("/api/plan", planRouter);
+app.use("/api/contact-us", contactUsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
