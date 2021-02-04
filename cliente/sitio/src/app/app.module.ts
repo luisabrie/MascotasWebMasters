@@ -17,12 +17,19 @@ import { ContactarComponent } from './components/contactar/contactar.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { AcercaComponent } from './components/acerca/acerca.component';
 import { CasosComponent } from './components/casos/casos.component';
+
 import { SearchComponent } from './components/noticias/search/search.component';
 import { SearchPipe } from './pipes/search.pipe';
 
+import { PieDataService } from './services/pie-data.service';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { DireccionComponent } from './interfazUsuario/direccion/direccion.component';
+import { DireccionaddComponent } from './interfazUsuario/direccionadd/direccionadd.component';
+import { DirectComponent } from './interfazUsuario/direct/direct.component';
+
 @NgModule({
   declarations: [
-    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent,SearchComponent, SearchPipe 
+    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent,SearchComponent, SearchPipe, PieChartComponent, DireccionComponent, DireccionaddComponent, DirectComponent
   ],
   imports: [
     HttpClientModule,
@@ -32,7 +39,7 @@ import { SearchPipe } from './pipes/search.pipe';
     ReactiveFormsModule,
     ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [PieDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

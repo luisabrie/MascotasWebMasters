@@ -1,0 +1,220 @@
+<!--
+=========================================================
+* Paper Dashboard 2 - v2.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/img/isotipo.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>
+    Volver a Casa
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/formsteps.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+  <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2BTfIlpxi4EpQFTu-VUOYFzTkMCIahos"></script>
+  <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+      <div class="logo">
+        <a href="" class="simple-text logo-mini">
+          <!-- <div class="logo-image-small">
+            <img src="./assets/img/logo-small.png">
+          </div> -->
+          <!-- <p>CT</p> -->
+        </a>
+        <!--<a href="" class="simple-text logo-normal">-->
+          <div class="logo-image-big">
+            <img src="../img/isotipo.png">
+          </div>
+        <!--</a>-->
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="active ">
+            <a href="">
+              <i class="nc-icon nc-email-85"></i>
+              <p>Peticiones</p>
+            </a>
+          </li>
+          <li>
+            <a href="http://localhost:3000/admin/pagos">
+              <i class="nc-icon nc-credit-card"></i>
+              <p>Pagos</p>
+            </a>
+          </li>
+          <li>
+            <a href="http://localhost:3000/admin/reportes">
+              <i class="nc-icon nc-sound-wave"></i>
+              <p>Reportes</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" style="height: 100vh;">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:;">Peticiones de los clientes</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+             aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-striped text-center">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Fecha de Ingreso</th>
+                  <th scope="col">Nombre y Apellido</th>
+                  <th scope="col">Mascota</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Informacion</th>
+                </tr>
+              </thead>
+              <tbody id="datahere">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="/assets/js/core/jquery.min.js"></script>
+  <script src="/assets/js/core/popper.min.js"></script>
+  <script src="/assets/js/core/bootstrap.min.js"></script>
+  <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+
+  <!-- Chart JS -->
+  <script src="/assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="/assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="/javascripts/peticiones.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <!--script src="./assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script-->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" 
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Verificacion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-5 p-4 bg-white shadow-sm">
+            <div id="stepper3" class="bs-stepper">
+              <div class="bs-stepper-header" role="tablist">
+                <div class="step" data-target="#test-nlf-1">
+                  <button type="button" class="step-trigger" role="tab" id="stepper3trigger1"
+                    aria-controls="test-nlf-1">
+                    <span class="bs-stepper-circle">
+                      <span class="fas fa-user" aria-hidden="true"></span>
+                    </span>
+                    <span class="bs-stepper-label">Mascota</span>
+                  </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                <div class="step" data-target="#test-nlf-2">
+                  <button type="button" class="step-trigger" role="tab" id="stepper3trigger2"
+                    aria-controls="test-nlf-2">
+                    <span class="bs-stepper-circle">
+                      <span class="fas fa-map-marked" aria-hidden="true"></span>
+                    </span>
+                    <span class="bs-stepper-label">Ubicacion</span>
+                  </button>
+                </div>
+                <div class="bs-stepper-line"></div>
+                
+                <div class="step" data-target="#test-nlf-3">
+                  <button type="button" class="step-trigger" role="tab" id="stepper3trigger3"
+                    aria-controls="test-nlf-3">
+                    <span class="bs-stepper-circle">
+                      <span class="fas fa-save" aria-hidden="true"></span>
+                    </span>
+                    <span class="bs-stepper-label">Datos Personales</span>
+                  </button>
+                </div>
+              </div>
+              <div class="bs-stepper-content">
+                <form onSubmit="return false">
+                  <div id="test-nlf-1" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="stepper3trigger1">
+                    
+                  </div>
+                  <div id="test-nlf-2" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="stepper3trigger2">
+                    <div id="map"></div>
+                  </div>
+                  <div id="test-nlf-3" role="tabpanel" class="bs-stepper-pane fade text-center"
+                    aria-labelledby="stepper3trigger3">
+                    <div id="dataplacemodalPersonal">
+                      
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-primary">Aprobar</button>
+          <button type="button" class="btn btn-danger">Negar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+  <script src="/javascripts/peticionesm.js"></script>
+</body>
+
+</html>

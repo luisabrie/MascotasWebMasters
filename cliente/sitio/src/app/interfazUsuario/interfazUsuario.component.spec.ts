@@ -15,7 +15,7 @@ describe('InterfazUsuarioComponent', () => {
         FormsModule
       ],
       declarations: [
-        MascotaComponent
+        MascotaComponent,
       ],
     })
     .compileComponents();

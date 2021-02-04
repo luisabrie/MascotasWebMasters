@@ -9,7 +9,7 @@ checkDuplicateEmail = (req, res, next) => {
   }).then((user) => {
     if (user) {
       res.status(400).send({
-        message: "Email already in use",
+        message: "Ese correo ya esta en uso",
       });
       return;
     }

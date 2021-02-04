@@ -1,0 +1,147 @@
+<div class="card" style="width: 18rem;">
+    <!--img class="card-img-top" src="..." alt="Card image cap"-->
+    <div class="card-body">
+      <div *ngIf="verificacion==true" class="text-right">
+        <button type="button" class="btn btn-dark btn-circle btn-sm" (click)=onDisplay()><i class="fa fa-info"></i></button>
+      </div>
+      <div *ngIf="verificacion==false" class="text-right">
+        <button type="button" class=" invisible btn btn-dark btn-circle btn-sm"><i class="fa fa-info"></i></button>
+      </div>
+      <h5 class="card-title">{{direccion.calle_principal}}</h5>
+      <p class="card-text">{{direccion.calle_secundario}}</p>
+      <div class="datosM">
+        <p class="title">Numero:</p>
+        <p class="card-text">{{direccion.numero}}</p>
+      </div>
+      <div class="datosM">
+        <p class="title">Referencia:</p>
+        <p class="card-text"> {{direccion.referencia}}</p>
+      </div>
+      <!--div class="datosM">
+        <p class="title">Tipo:</p>
+        <p class="card-text">{{mascota.tipo}}</p>
+      </div-->
+      <div class="btn-group mt-2" role="group">
+        <button type="button" class="btn btn-success" (click)= onUpdateModal(direccion)><i class="fa fa-edit"></i></button>
+        <button type="button" class="btn btn-danger" (click)=onDeleteModal()><i class="fa fa-trash-alt"></i></button>       
+      </div>
+    </div>
+  </div>
+
+
+<ng-template #editTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Editar información de la direccion</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    
+    <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+      <ul class="list-group">
+        <li class="list-group-item" [hidden]="id">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="direccionId"><i class="fa fa-key"></i></span>
+            </div>
+            <input type="text" class="form-control" formControlName="id" />
+          </div>
+
+        </li>
+        <li class="list-group-item">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="direccionTitle"><i class="fa fa-pencil-square-o"></i></span>
+                </div>
+                <input type="text" id="calle_principal" formControlName="calle_principal" class="form-control" placeholder="Ingresa el nombre de la calle principal." aria-label="calle_principal" aria-describedby="direccionTitle">
+            </div>
+            <div *ngIf="_calle_principal.touched && _calle_principal.errors" class="errorMessage">
+                <span *ngIf="_calle_principal.hasError('required')">Se require el nombre de la calle principal.</span>
+                <span *ngIf="_calle_principal.hasError('maxlength')"></span>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="direccionDescription"><i class="fa fa-pencil-square-o"></i></span>
+                </div>
+                <textarea formControlName="calle_secundario" class="form-control" placeholder="Ingresa el nombre de la calle secundaria" aria-label="calle_secundario" aria-describedby="mascotaDescription"></textarea>
+            </div>
+            <div *ngIf="_calle_secundario.touched && _calle_secundario.errors" class="errorMessage">
+                <span *ngIf="_calle_secundario.hasError('required')">Se requiere el nombre de la calle secundaria.</span>
+                <span *ngIf="_calle_secundario.hasError('maxlength')">Solo se permiten 150 caracteres.</span>
+            </div>
+        </li>
+        <li class="list-group-item">
+          <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="mascotaRaza"><i class="fa fa-pencil-square-o"></i></span>
+              </div>
+              <input type="text" id="numero" formControlName="numero" class="form-control" placeholder="Ingresa el numero." aria-label="numero" aria-describedby="mascotaRaza">
+          </div>
+          <div *ngIf="_numero.touched && _numero.errors" class="errorMessage">
+              <span *ngIf="_numero.hasError('required')">Se require el numero.</span>
+              <span *ngIf="_numero.hasError('maxlength')"></span>
+          </div>
+      </li>
+      <li class="list-group-item">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="mascotaColor"><i class="fa fa-pencil-square-o"></i></span>
+            </div>
+            <input type="text" id="referencia" formControlName="referencia" class="form-control" placeholder="Ingrese una referencia." aria-label="referencia" aria-describedby="mascotaColor">
+        </div>
+        <div *ngIf="_referencia.touched && _referencia.errors" class="errorMessage">
+            <span *ngIf="_referencia.hasError('required')">Se require una referencia.</span>
+            <!--span *ngIf="_color.hasError('maxlength')"></span-->
+        </div>
+    </li>
+
+       
+        <li class="list-group-item">
+          <button [disabled]="updateForm.invalid" class="btn btn-warning btn-block">ACTUALIZAR</button>
+        </li>
+      </ul>
+
+    </form>
+
+  </div>
+</ng-template>
+
+<ng-template #infoTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Detalles de petición</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <div class="request">
+      <div class="cardData" id="check">
+        <i class="fa fa-check-circle fa-4x"></i>
+        <p class="sent">Los datos de tu mascota han sido verificados y tu pago se ha procesado correctamente.</p>
+      </div>
+      <div class="cardData" id="sent">
+        <i class="fa fa-paper-plane fa-4x"></i>
+        <p class="sent">¡Tu anuncio ya ha sido publicado!</p>
+      </div>
+
+    </div>
+  </div>
+</ng-template>
+
+<ng-template  #deleteTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title">Confirmación de eliminación</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <p>¿Desea eliminar la mascota?</p>
+    <button class="btn btn-warning btn-block" (click)=onDelete()>ELIMINAR</button>
+
+  </div>
+</ng-template>
+  

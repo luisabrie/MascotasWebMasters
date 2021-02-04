@@ -7,16 +7,14 @@ var logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-
-
-
 var mascotaRouter = require("./routes/mascota.routes");
+var adminRouter = require("./routes/admin.routes");
 var usuarioRouter = require("./routes/usuario.routes");
 var authRouter = require("./routes/auth.routes");
 var userRouter = require("./routes/user.routes");
 var direccionRouter = require("./routes/direccion.routes");
-var noticiaRouter = require('./routes/noticia.routes');
-
+var noticiaRouter = require("./routes/noticia.routes");
+var planRouter = require("./routes/plan.routes");
 
 var app = express();
 
@@ -27,6 +25,8 @@ db.sequelize.sync({ force: true }).then(() => {
   initial();
 });
 
+var corsOptions = { origin: "http://localhost:4200" };
+
 function initial() {
   db.tipo.create({
     id: 1,
@@ -36,6 +36,23 @@ function initial() {
   db.tipo.create({
     id: 2,
     name: "admin",
+  });
+
+  db.plan.create({
+    nombre: "Basic",
+    precio: 3,
+    duracion: 1,
+    personaRangoMenor: 10,
+    personaRangoMayor: 20,
+    estado: true,
+  });
+  db.plan.create({
+    nombre: "Premium",
+    precio: 5,
+    duracion: 2,
+    personaRangoMenor: 30,
+    personaRangoMayor: 60,
+    estado: true,
   });
 }
 
@@ -48,6 +65,11 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 //app.use(bodyParser.urlencoded({​​​​​​​​extended: true}​​​​​​​​));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/assets", express.static("assets"));
+app.use("/img", express.static("img"));
+app.use("/json", express.static("json"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // view engine setup
@@ -59,19 +81,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/api/mascotas',mascotaRouter);
-app.use('/api/usuarios',usuarioRouter);
-app.use('/api/direcciones',direccionRouter);
-app.use('/api/noticias',noticiaRouter);
-
-
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/mascotas", mascotaRouter);
 app.use("/api/usuarios", usuarioRouter);
 app.use("/api/direcciones", direccionRouter);
+app.use("/admin", adminRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/test", userRouter);
+app.use("/api/noticias", noticiaRouter);
+app.use("/api/plan", planRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
