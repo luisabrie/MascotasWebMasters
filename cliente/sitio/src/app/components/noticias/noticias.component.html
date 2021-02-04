@@ -17,15 +17,12 @@
     <h2 class=" font-weight-bold">Lo más destacado</h2>
 </div>
 <hr class="divider-black" />
-<div id="destacado" class="row">
-    
-</div>
+
 <hr class="divider-black " />
 <br><br>
 
 <div id="general" class="row container ">
-    <div class ="  col-12 " >
-        <div class="card mt-2 bg-warning" >
+        <div id="card" class="card mt-2  col-12 " >
             <img class="card-img-top" src="https://placedog.net/350/200" alt="imagen de noticia">
             <div class="card-header bg-secondary text-white">
                 Titulo:  {{contenidoPrincipal.titulo}}
@@ -36,21 +33,24 @@
                 
             </div>
             </div>
-    </div>
+    
 </div>
 <app-search (buscar)="handleSearch($event) "  > </app-search>
 
+
+
+
     <div class="row container  ">
             <div class ="col-lg-4 col-sm-6 " *ngFor="let noticia of noticias| search:filtro_noticia">
-                <div class="card mt-2 bg-warning" >
+                <div id="card"  class="card mt-2 " >
                     <img class="card-img-top" src="https://placedog.net/350/200" alt="imagen de noticia">
                     <div class="card-header bg-secondary text-white" #tituloId>
-                        Titulo:  {{noticia.titulo}}
+                        {{noticia.titulo}}
                     </div>
                     <div class="card-body" >
                         <h5 class="card-title" #noticiaId>{{noticia.noticia}} </h5>
-                        <p class="card-text" #comentarioId>Comentario : {{noticia.comentario}} </p>
-                        <a  class="btn btn-primary" (click)="ngAfterViewInit()">Ver Noticia</a>
+                        <p class="card-text" #comentarioId>{{noticia.comentario}} </p>
+                        <a   class="btn btn-primary" (click)="ngAfterViewInit()">Ver Noticia</a>
                     </div>
                     </div>
             </div>

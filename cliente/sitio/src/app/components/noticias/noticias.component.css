@@ -1,0 +1,27 @@
+.card{
+    margin: 5px;
+    padding: 0;
+}
+div#card > div.col-9{
+    display: flex;
+    float: left;
+    
+}
+#card:hover{
+    background-color: #221f1fd7;
+    color: honeydew;
+}
+
+#destacado,#cards{
+    justify-content: center;
+    
+}
+
+#card .card-body > h4.card-title{
+    font-size: 20px;
+}
+#card .card-body > div#usuario {
+    
+    color: gray;
+    font-size: 15px;
+}

@@ -11,7 +11,7 @@ export class NoticiasComponent implements OnInit {
 
   noticias:[];
   filtro_noticia=''
-  contenidoPrincipal={"titulo":"titulo1", "comentario":"comentario principal","noticia":""}
+  contenidoPrincipal={"titulo":"", "comentario":"","noticia":""}
   conversionNoticia:any;
 
   constructor(private http:HttpClient) { }
@@ -21,6 +21,13 @@ export class NoticiasComponent implements OnInit {
     .subscribe(data=>{
       this.conversionNoticia=data;
       this.noticias=this.conversionNoticia;
+      this.contenidoPrincipal
+      .titulo=this.conversionNoticia[0].titulo
+      this.contenidoPrincipal
+      .noticia=this.conversionNoticia[0].noticia
+      this.contenidoPrincipal
+      .comentario=this.conversionNoticia[0].comentario
+      
 
       console.log(this.noticias);
     });
@@ -29,7 +36,7 @@ export class NoticiasComponent implements OnInit {
 
   @ViewChild('comentarioId',{read: ElementRef}) comentario_: ElementRef;
   @ViewChild('tituloId',{read: ElementRef}) titulo_: ElementRef;
-  @ViewChild('noticiaId',{read: ElementRef}) noticia_: ElementRef;
+  @ViewChild('noticiaId') noticia_: ElementRef;
 
   _/*obtener(){
     this.contenidoPrincipal.comentario=this.comentario_.nativeElement.value;
@@ -41,8 +48,8 @@ export class NoticiasComponent implements OnInit {
 
   ngAfterViewInit() {
     this.contenidoPrincipal.comentario=this.comentario_.nativeElement.textContent;
-    this.contenidoPrincipal.titulo=this.titulo_.nativeElement.value;
-    this.contenidoPrincipal.noticia=this.noticia_.nativeElement.value;
+    this.contenidoPrincipal.titulo=this.titulo_.nativeElement.textContent;
+    this.contenidoPrincipal.noticia=this.noticia_.nativeElement.textContent;
     console.log(this.contenidoPrincipal)
   }
  

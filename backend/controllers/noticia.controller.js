@@ -64,7 +64,9 @@ const noticia = {
     
 };
 
-Mascota.create(noticia)
+
+
+Noticia.create(noticia)
     .then(data => {
         res.send(data);
     })
