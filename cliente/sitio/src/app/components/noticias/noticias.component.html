@@ -23,20 +23,34 @@
 <hr class="divider-black " />
 <br><br>
 
+<div id="general" class="row container ">
+    <div class ="  col-12 " >
+        <div class="card mt-2 bg-warning" >
+            <img class="card-img-top" src="https://placedog.net/350/200" alt="imagen de noticia">
+            <div class="card-header bg-secondary text-white">
+                Titulo:  {{contenidoPrincipal.titulo}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{contenidoPrincipal.noticia}} </h5>
+                <p class="card-text" >Comentario : {{contenidoPrincipal.comentario}} </p>
+                
+            </div>
+            </div>
+    </div>
+</div>
+<app-search (buscar)="handleSearch($event) "  > </app-search>
 
-<app-search (buscar)="handleSearch($event)" > </app-search>
-
-    <div class="row container ">
+    <div class="row container  ">
             <div class ="col-lg-4 col-sm-6 " *ngFor="let noticia of noticias| search:filtro_noticia">
-                <div class="card mt-2" >
+                <div class="card mt-2 bg-warning" >
                     <img class="card-img-top" src="https://placedog.net/350/200" alt="imagen de noticia">
-                    <div class="card-header">
-                        Noticia:  {{noticia.titulo}}
+                    <div class="card-header bg-secondary text-white" #tituloId>
+                        Titulo:  {{noticia.titulo}}
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Titulo: {{noticia.Noticia}} </h5>
-                        <p class="card-text">Comentario : {{noticia.comentario}} </p>
-                        <a href="#" class="btn btn-primary">Ver</a>
+                    <div class="card-body" >
+                        <h5 class="card-title" #noticiaId>{{noticia.noticia}} </h5>
+                        <p class="card-text" #comentarioId>Comentario : {{noticia.comentario}} </p>
+                        <a  class="btn btn-primary" (click)="ngAfterViewInit()">Ver Noticia</a>
                     </div>
                     </div>
             </div>

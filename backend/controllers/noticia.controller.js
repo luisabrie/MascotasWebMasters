@@ -7,7 +7,7 @@ const Usuario = db.usuario;
 const Op = db.Sequelize.Op;
 
 
-// Retrieve all Usuario from the database.
+// Retrieve all Noticias from the database.
 exports.findAll = (req, res) => {
     Noticia.findAll({
       where:{
@@ -78,9 +78,27 @@ Mascota.create(noticia)
 
 // Update Noticia
 exports.update = (req, res) => {
+  datos = req.body
+  Noticia.update(
+    {
+      titulo: datos['titulo'],
+      noticia: datos['noticia']
+    }, 
+    {
+      where: {
+        id: datos['id']
+      }
+    })
+    .then(data => {
+      res.send(data)
 
-
-
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred"
+      });
+    });
 
 
   
@@ -88,5 +106,16 @@ exports.update = (req, res) => {
 
 // Delete Noticia
 exports.delete = (req, res) => {
+  if (!req.params.id) {
+    res.status(400).send({
+        message: "Content can not be empty!"
+    });
+    return;
+  }
+  Noticia.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
 
 };
