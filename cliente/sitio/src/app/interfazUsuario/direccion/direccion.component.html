@@ -1,0 +1,16 @@
+<app-header></app-header>
+
+<div class="container mt-2">
+
+    <app-direccionadd (notify)="parentMethod($event)"></app-direccionadd>
+
+    <div class="row app-container p-2 ">
+        
+        <div class ="col-lg-10 offset-md-1 content">
+            <div *ngFor="let direccion of direcciones">
+                <app-direct (notify)="parentMethod($event)" [direccion]="direccion"></app-direct>
+            </div>
+        </div>
+        
+    </div>
+</div>

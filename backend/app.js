@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 var mascotaRouter = require("./routes/mascota.routes");
+var adminRouter = require("./routes/admin.routes");
 var usuarioRouter = require("./routes/usuario.routes");
 var authRouter = require("./routes/auth.routes");
 var userRouter = require("./routes/user.routes");
@@ -23,6 +24,8 @@ db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and Resync Db");
   initial();
 });
+
+var corsOptions = { origin: "http://localhost:4200" };
 
 function initial() {
   db.tipo.create({
@@ -62,6 +65,11 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 //app.use(bodyParser.urlencoded({​​​​​​​​extended: true}​​​​​​​​));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/assets", express.static("assets"));
+app.use("/img", express.static("img"));
+app.use("/json", express.static("json"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // view engine setup
@@ -78,6 +86,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/mascotas", mascotaRouter);
 app.use("/api/usuarios", usuarioRouter);
 app.use("/api/direcciones", direccionRouter);
+app.use("/admin", adminRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/test", userRouter);
 app.use("/api/noticias", noticiaRouter);
