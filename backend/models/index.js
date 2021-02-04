@@ -10,8 +10,8 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     max: dbConfig.pool.max,
     min: dbConfig.pool.min,
     acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle
-  }
+    idle: dbConfig.pool.idle,
+  },
 });
 
 const db = {};
@@ -23,7 +23,10 @@ db.mascota = require("./mascota.model.js")(sequelize, Sequelize);
 
 db.estadoMascota = require("./estadoMascota.model.js")(sequelize, Sequelize);
 db.anuncio = require("./anuncio.model.js")(sequelize, Sequelize);
-db.ubicacionAnuncio = require("./ubicacionAnuncio.model.js")(sequelize, Sequelize);
+db.ubicacionAnuncio = require("./ubicacionAnuncio.model.js")(
+  sequelize,
+  Sequelize
+);
 db.direccion = require("./direccion.model.js")(sequelize, Sequelize);
 db.ubicacion = require("./ubicacion.model.js")(sequelize, Sequelize);
 
@@ -45,8 +48,10 @@ db.ubicacionAnuncio.belongsTo(db.ubicacion);
 db.ubicacion.hasOne(db.direccion);
 db.direccion.belongsTo(db.ubicacion);
 
-db.usuario = require("./usuario.model.js")(sequelize, Sequelize);
+db.usuario = require("./usuario.model")(sequelize, Sequelize);
+db.tipo = require("./usuarioTipo.model")(sequelize, Sequelize);
 db.telefono = require("./telefono.model.js")(sequelize, Sequelize);
+
 db.noticia = require("./noticia.model.js")(sequelize, Sequelize);
 db.comentario = require("./comentario.model.js")(sequelize, Sequelize);
 db.direccion = require("./direccion.model.js")(sequelize, Sequelize);
@@ -83,6 +88,18 @@ db.comentario.belongsTo(db.noticia);
 //db.direccion.hasMany(db.usuario);
 //db.usuario.belongsTo(db.direccion);
 
+db.tipo.belongsToMany(db.usuario, {
+  through: "user_tipo",
+  foreignKey: "tipoId",
+  otherKey: "usuarioId",
+});
+
+db.usuario.belongsToMany(db.tipo, {
+  through: "user_tipo",
+  foreignKey: "userId",
+  otherKey: "tipoId",
+});
+
 db.canton.hasMany(db.direccion);
 db.direccion.belongsTo(db.canton);
 
@@ -99,6 +116,6 @@ db.plan.hasMany(db.redesPlan);
 db.redesPlan.belongsTo(db.plan);
 
 db.redes.hasMany(db.redesPlan);
-db.redesPlan.belongsTo(db.redes)
+db.redesPlan.belongsTo(db.redes);
 
 module.exports = db;
