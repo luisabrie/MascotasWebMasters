@@ -55,6 +55,7 @@ exports.findAll = (req, res) => {
           err.message || "Some error occurred while retrieving maestros."
       });
     });
+
 };
 
 
@@ -105,24 +106,6 @@ exports.delete = (req, res) => {
 
 };
 
-//devuelve todos los anuncios
-exports.getAnuncios = (req, res) => {
-  Anuncio.findAll({
-    where:{},
-    include: [Mascota]
-  }
-
-  )
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving maestros."
-      });
-    });
-};
 
 //devuelve anuncios que aun no han sido aprobados
 exports.getPeticiones = (req, res) => {
@@ -130,7 +113,12 @@ exports.getPeticiones = (req, res) => {
     where:{
       fecha_inicio: null,
     },
-    include: [Mascota]
+    include: [
+      {
+        model: Mascota,
+        include: [Usuario]
+      }
+    ]
   }
 
   )
@@ -277,21 +265,30 @@ exports.findbyTipo = (req, res) => {
       let datos = [
 
         {
-          label: "Perdidas",
+          label: "Perro",
           value: 0,
         },
         {
-          label: "Encontradas",
+          label: "Gato",
+          value: 0,
+        },
+        {
+          label: "Otro",
           value: 0,
         },
 
+
       ]
       for(elem of data){
-        if(elem.estado =='Perdida'){
+        console.log(data)
+        if(elem.mascotum.tipo =='Perro'){
           datos[0].value = datos[0].value +1
         }
-        if(elem.estado =='Encontrada'){
+        if(elem.estado =='Gato'){
           datos[1].value = datos[1].value +1
+        }
+        if(elem.estado =='Otro'){
+          datos[1].value = datos[2].value +1
         }
       }
       res.send(datos);

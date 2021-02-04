@@ -10,8 +10,6 @@ router.put('/updatemascota',  mascotaController.update);
 
 router.get('/usuario/:id', mascotaController.findbyUser);
 
-
-router.get('/anuncios', mascotaController.getAnuncios);
 router.get('/peticiones', mascotaController.getPeticiones);
 router.get('/peticion/verificacion/:id', mascotaController.verifybyId);
 router.get('/publicacion/:id', mascotaController.findPeticionbyId);
