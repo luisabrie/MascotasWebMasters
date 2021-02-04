@@ -9,6 +9,8 @@ import { ContactarComponent } from 'src/app/components/contactar/contactar.compo
 import { AcercaComponent } from 'src/app/components/acerca/acerca.component';
 import { CasosComponent } from 'src/app/components/casos/casos.component';
 
+import { DireccionComponent } from  'src/app/interfazUsuario/direccion/direccion.component';
+
 
 const routes: Routes = [
   {path: 'user/login', component:  LoginComponent},
@@ -18,7 +20,8 @@ const routes: Routes = [
   {path: 'equipo', component: EquipoComponent},
   {path: 'contactar', component: ContactarComponent},
   {path: 'acerca', component: AcercaComponent},
-  {path: 'casos', component: CasosComponent}
+  {path: 'casos', component: CasosComponent},
+  {path: 'interfazUsuario/direccion', component: DireccionComponent},
   
 ];
 
