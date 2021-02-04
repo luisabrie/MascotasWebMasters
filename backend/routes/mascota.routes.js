@@ -20,10 +20,9 @@ router.get('/peticiones/verificacion/pago/:id', mascotaController.findPagoOfAnun
 
 router.get('/peticiones/verificacion/usuario/:id', mascotaController.findAnunciosbyUserId);
 
-router.get('/tipo', mascotaController.findbyTipo);
 
 router.post('/peticiones/verificacion/pago', mascotaController.updatePagoStatus);
 
-
+router.get('/tipo', mascotaController.findbyTipo);
 
 module.exports = router;

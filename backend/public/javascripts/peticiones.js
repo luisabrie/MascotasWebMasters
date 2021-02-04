@@ -1,5 +1,5 @@
 function modalPut(id) {
-    fetch('../json/peticiones.json')
+    fetch('/json/peticiones.json')
         .then(response => response.json())
         .then(data => {
             let i = 0;
@@ -56,7 +56,7 @@ function modalPut(id) {
 
 
 let cargarJSON = () => {
-    fetch('../json/peticiones.json')
+    fetch('/json/peticiones.json')
         .then(response => response.json())
         .then(data => {
 

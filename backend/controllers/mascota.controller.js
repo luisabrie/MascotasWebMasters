@@ -166,27 +166,6 @@ exports.findbyUser = (req, res) => {
 };
 
 
-
-
-//devuelve todas las mascotas con sus estados y sus tipos
-exports.findbyTipo = (req, res) => {
-  EstadoMascota.findAll({
-    where:{
-    },
-    include: [Mascota]
-  }
-  )
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving maestros."
-      });
-    });
-};
-
 //devuelve datos de mascota, usuario y ubicacion de un anuncio 
 exports.findPeticionbyId = (req, res) => {
   Anuncio.findAll({
@@ -286,3 +265,41 @@ exports.updatePagoStatus = (req, res) => {
     )
 };
 
+//devuelve todas las mascotas con sus estados y sus tipos
+exports.findbyTipo = (req, res) => {
+  EstadoMascota.findAll({
+    where:{
+    },
+    include: [Mascota]
+  }
+  )
+    .then(data => {
+      let datos = [
+
+        {
+          label: "Perdidas",
+          value: 0,
+        },
+        {
+          label: "Encontradas",
+          value: 0,
+        },
+
+      ]
+      for(elem of data){
+        if(elem.estado =='Perdida'){
+          datos[0].value = datos[0].value +1
+        }
+        if(elem.estado =='Encontrada'){
+          datos[1].value = datos[1].value +1
+        }
+      }
+      res.send(datos);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving maestros."
+      });
+    });
+};

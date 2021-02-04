@@ -1,5 +1,5 @@
 let cargarJSON = ()=>{
-    fetch("json/pagos.json")
+    fetch("/json/pagos.json")
 
     .then( (resultado) => {
         return resultado.json()

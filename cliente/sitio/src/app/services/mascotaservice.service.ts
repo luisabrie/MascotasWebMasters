@@ -3,6 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry, shareReplay } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Mascota } from '../interfazUsuario/mascota/mascota.model';
+import { PieData } from '../pie-chart/pie-data';
 
 @Injectable({
   providedIn: 'root'

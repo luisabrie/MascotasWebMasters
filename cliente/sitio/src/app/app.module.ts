@@ -17,10 +17,12 @@ import { ContactarComponent } from './components/contactar/contactar.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { AcercaComponent } from './components/acerca/acerca.component';
 import { CasosComponent } from './components/casos/casos.component';
+import { PieDataService } from './services/pie-data.service';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent
+    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent, PieChartComponent,
   ],
   imports: [
     HttpClientModule,
@@ -30,7 +32,7 @@ import { CasosComponent } from './components/casos/casos.component';
     ReactiveFormsModule,
     ModalModule.forRoot(),
   ],
-  providers: [],
+  providers: [PieDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,7 @@ const cors = require("cors");
 var mascotaRouter = require('./routes/mascota.routes');
 var usuarioRouter = require('./routes/usuario.routes');
 var direccionRouter = require('./routes/direccion.routes');
-
+var adminRouter = require('./routes/admin.routes');
 
 
 var app = express();
@@ -18,7 +18,7 @@ var app = express();
 const db = require("./models");
 db.sequelize.sync();
 
-var corsOptions = {origin: "http://localhost:4200"};
+var corsOptions = {origin: "http://localhost:4200" };
 
 
 app.use(cors(corsOptions)); 
@@ -29,6 +29,9 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 //app.use(bodyParser.urlencoded({​​​​​​​​extended: true}​​​​​​​​));
 app.use(bodyParser.urlencoded({extended:true}));
+app.use('/assets',express.static('assets'));
+app.use('/img',express.static('img'));
+app.use('/json',express.static('json'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/mascotas',mascotaRouter);
 app.use('/api/usuarios',usuarioRouter);
 app.use('/api/direcciones',direccionRouter);
+app.use('/admin',adminRouter);
 
 
 
