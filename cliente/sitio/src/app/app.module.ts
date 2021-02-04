@@ -26,10 +26,11 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { DireccionComponent } from './interfazUsuario/direccion/direccion.component';
 import { DireccionaddComponent } from './interfazUsuario/direccionadd/direccionadd.component';
 import { DirectComponent } from './interfazUsuario/direct/direct.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent,SearchComponent, SearchPipe, PieChartComponent, DireccionComponent, DireccionaddComponent, DirectComponent
+    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent,SearchComponent, SearchPipe, PieChartComponent, DireccionComponent, DireccionaddComponent, DirectComponent, BarChartComponent
   ],
   imports: [
     HttpClientModule,
