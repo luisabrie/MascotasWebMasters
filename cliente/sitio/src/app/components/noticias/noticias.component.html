@@ -23,18 +23,22 @@
 <hr class="divider-black " />
 <br><br>
 
-<div class="form-inline d-flex justify-content-center md-form form-sm m-1">
-    
-    <i class="fas fa-search" aria-hidden="true"></i>
-    <input  id="myInput" class="form-control form-control-sm ml-3 w-50" type="text" placeholder="Busca una noticia de tu interes mediante su titulo" aria-label="Search">
-</div>
-<div class="container-fluid p-4 ">
-    <div class="row app-container p-2 ">
-        <!--div class ="col-lg-10 offset-md-1 content">
-            <div *ngFor="let noticia of noticias">
-                <app-mascota (notify)="parentMethod($event)" [mascota]="mascota"></app-mascota>
+
+<app-search (buscar)="handleSearch($event)" > </app-search>
+
+    <div class="row container ">
+            <div class ="col-lg-4 col-sm-6 " *ngFor="let noticia of noticias| search:filtro_noticia">
+                <div class="card mt-2" >
+                    <img class="card-img-top" src="https://placedog.net/350/200" alt="imagen de noticia">
+                    <div class="card-header">
+                        Noticia:  {{noticia.titulo}}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Titulo: {{noticia.Noticia}} </h5>
+                        <p class="card-text">Comentario : {{noticia.comentario}} </p>
+                        <a href="#" class="btn btn-primary">Ver</a>
+                    </div>
+                    </div>
             </div>
-        </div-->
-        
     </div>
-</div>
+

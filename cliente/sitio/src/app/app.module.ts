@@ -17,10 +17,12 @@ import { ContactarComponent } from './components/contactar/contactar.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
 import { AcercaComponent } from './components/acerca/acerca.component';
 import { CasosComponent } from './components/casos/casos.component';
+import { SearchComponent } from './components/noticias/search/search.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent
+    AppComponent, MascotaComponent, HeaderComponent, AddMascotaComponent, NavbarComponent, LoginComponent, RegistrarComponent, InterfazUsuarioComponent, NoticiasComponent, ContactarComponent, EquipoComponent, AcercaComponent, CasosComponent,SearchComponent, SearchPipe 
   ],
   imports: [
     HttpClientModule,
