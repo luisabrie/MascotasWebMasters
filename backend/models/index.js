@@ -68,17 +68,15 @@ db.redes = require("./redes.model.js")(sequelize, Sequelize);
 db.redesPlan = require("./redesPlan.model.js")(sequelize, Sequelize);
 
 db.anuncio.hasMany(db.pago);
-db.anuncio.hasOne(db.plan);
+
 db.usuario.hasMany(db.telefono);
 db.telefono.belongsTo(db.usuario);
 
 db.usuario.hasMany(db.noticia);
 db.noticia.belongsTo(db.usuario);
 
-
 db.usuario.hasMany(db.mascota);
 db.mascota.belongsTo(db.usuario);
-
 
 db.usuario.hasMany(db.comentario);
 db.noticia.hasMany(db.comentario);
@@ -113,6 +111,7 @@ db.mediopago.hasMany(db.pago);
 db.pago.belongsTo(db.mediopago);
 
 db.plan.hasMany(db.redesPlan);
+db.plan.hasMany(db.anuncio);
 db.redesPlan.belongsTo(db.plan);
 
 db.redes.hasMany(db.redesPlan);

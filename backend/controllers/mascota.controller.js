@@ -300,3 +300,48 @@ exports.findbyTipo = (req, res) => {
       });
     });
 };
+
+//devuelve todas las mascotas con sus estados y sus tipos
+exports.findbyEstado = (req, res) => {
+  Mascota.findAll({
+    where:{
+    },
+  }
+  )
+    .then(data => {
+      let datos = [
+
+        {
+          label: "Gato",
+          value: 0,
+        },
+        {
+          label: "Perro",
+          value: 0,
+        },
+        {
+          label: "Otro",
+          value: 0,
+        },
+
+      ]
+      for(elem of data){
+        if(elem.tipo =='Gato'){
+          datos[0].value = datos[0].value +1
+        }
+        if(elem.tipo =='Perro'){
+          datos[1].value = datos[1].value +1
+        }
+        if(elem.tipo =='Otro'){
+          datos[2].value = datos[2].value +1
+        }
+      }
+      res.send(datos);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving maestros."
+      });
+    });
+};

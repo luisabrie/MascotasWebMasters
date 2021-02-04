@@ -23,4 +23,7 @@ router.post('/peticiones/verificacion/pago', mascotaController.updatePagoStatus)
 
 router.get('/tipo', mascotaController.findbyTipo);
 
+router.get('/estado', mascotaController.findbyEstado);
+
+
 module.exports = router;
